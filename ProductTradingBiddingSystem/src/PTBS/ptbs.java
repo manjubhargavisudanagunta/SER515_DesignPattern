@@ -1,5 +1,3 @@
-package PTBS;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,10 +12,11 @@ public class ptbs {
 		
 		System.out.println("Facade ");
 		Facade facade = new Facade();
-		Map<String,Object> authResponse = facade.login();
-		if((boolean) authResponse.get("loginStatus")) {
-			System.out.println("Welcome "+authResponse.get("thePerson"));
-			System.out.println(" 0  to continue \n 1 to logout");
+		Map<String,Object> authenticationResponse = facade.login();
+		if((boolean) authenticationResponse.get("loginStatus")) {
+			System.out.println("Welcome "+authenticationResponse.get("thePerson"));
+			System.out.println(" 0  to continue");
+			System.out.println("1 to logout");
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			int consoleLog = sc.nextInt();
@@ -26,7 +25,7 @@ public class ptbs {
 				facade.login();
 			}else if(consoleLog == 0){
 				System.out.println("Iterator ");
-				String inputProductFile = "./src/ProductInfo.txt";
+				String inputProductFile = "./src/PTBS/ProductInfo.txt";
 				FileReader ProductInfoFile;
 				String[] productList = new String[15];
 				int i = 0;
@@ -52,20 +51,23 @@ public class ptbs {
 				int ProductChoice = sc.nextInt();
 				String selectedProduct = productList[ProductChoice-1];
 				System.out.println("select Product Level "+selectedProduct);
-				System.out.println(" 0 : ProduceProductMenu \n 1 : MeatProductMenu");
+				System.out.println(" 0 : ProduceProductMenu");
+				System.out.println(" 1 : MeatProductMenu");
 				int choice = sc.nextInt();
 				String ProductLevel = (choice == 1) ? "MeatProductMenu" : "ProduceProductMenu";
-				System.out.println("You selected '"+selectedProduct+"' with Product level '"+ProductLevel+"' for seller '"+authResponse.get("thePerson")+"'");
 				System.out.println("Choose one  ");
-				System.out.println(" 0 : Create Product Menu \n 1 : Show Menu \n 2 : Reminder \n 3 : Logout");
+				System.out.println(" 0 : Create Product Menu");
+				System.out.println("1 : Show Menu");
+				System.out.println("2 : Reminder");
+				System.out.println("3 : Logout");
 				int option = sc.nextInt();
 				if(option == 0) {
 					System.out.println(" Factory ");
 					
 					if(true) {
-						new Seller(null).CreateProductMenu(authResponse.get("thePerson"),selectedProduct, ProductLevel);
+						new Seller(null).CreateProductMenu(authenticationResponse.get("thePerson"),selectedProduct, ProductLevel);
 					}else {
-						new Buyer(null).CreateProductMenu(authResponse.get("thePerson"),selectedProduct, ProductLevel);
+						new Buyer(null).CreateProductMenu(authenticationResponse.get("thePerson"),selectedProduct, ProductLevel);
 					}
 				}else if(option == 1) {
 				 System.out.println("Show Product Menu");
@@ -78,14 +80,15 @@ public class ptbs {
 					System.out.println("Invalid option");
 				}
 				System.out.println("\nDo you want to proceed?");
-				System.out.println(" 0 : NO \n 1 : YES");
+				System.out.println(" 0 : NO");
+				System.out.println("1 : YES");
 				int confirm = sc.nextInt();
 				if(confirm == 0) {
 					System.out.println("Cancelled.");
 				}else if(confirm == 1) {
 					System.out.println("Bridge");
 					System.out.println("Create Product menu ");
-					System.out.println("Send product level to the user type");
+					System.out.println("Send product level touser");
 					
 					 Person seller = new Seller(new MeatProductMenu());
 				     seller.ProductMenu();
