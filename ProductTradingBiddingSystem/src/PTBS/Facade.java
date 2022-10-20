@@ -39,7 +39,7 @@ public class Facade implements Reminder{
 		    }else{
 		    	boolean BuyerLoginStatus = loginVerification("./src/BuyerInfo.txt", user1, password1);
 		    	if(BuyerLoginStatus) {
-		    		System.out.println("logged in as instructor ");
+		    		System.out.println("logged in as Buyer");
 			    	loginStatus = BuyerLoginStatus;
 			    	UserType = BuyerLoginStatus? 1:0;
 			    	thePerson = user1;
