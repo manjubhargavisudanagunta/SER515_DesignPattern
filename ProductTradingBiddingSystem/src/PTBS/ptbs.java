@@ -1,3 +1,5 @@
+package PTBS;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +27,7 @@ public class ptbs {
 				facade.login();
 			}else if(consoleLog == 0){
 				System.out.println("Iterator ");
-				String inputProductFile = "./src/PTBS/ProductInfo.txt";
+				String inputProductFile = "/src/PTBS/ProductInfo.txt";
 				FileReader ProductInfoFile;
 				String[] productList = new String[15];
 				int i = 0;
