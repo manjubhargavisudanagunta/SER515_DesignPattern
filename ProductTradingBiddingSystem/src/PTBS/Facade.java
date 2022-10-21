@@ -16,6 +16,7 @@ public class Facade implements Reminder{
 	@SuppressWarnings("unused")
 	private int nProductCategory;
 
+	
 	@SuppressWarnings("unused")
 	private ClassProductList theProductList;
 
@@ -31,14 +32,14 @@ public class Facade implements Reminder{
 			String user1 = pm.nextLine();
 			System.out.println("Enter Password:");
 			String password1 = pm.nextLine();
-		    boolean Login = loginVerification(".src/PTBS/SellerInfo.txt", user1, password1);
+		    boolean Login = loginVerification("src/PTBS/SellerInfo.txt", user1, password1);
 		    if(Login) {
 		    	System.out.println("Logged in as a Seller");
 		    	login_Status = Login;
 		    	UserType = Login? 0:1;
 		    	thePerson = user1;
 		    }else{
-		    	boolean BuyerLoginStatus = loginVerification(".src/PTBS/BuyerInfo.txt", user1, password1);
+		    	boolean BuyerLoginStatus = loginVerification("src/PTBS/BuyerInfo.txt", user1, password1);
 		    	if(BuyerLoginStatus) {
 		    		System.out.println("logged in as Buyer ");
 			    	login_Status = BuyerLoginStatus;
