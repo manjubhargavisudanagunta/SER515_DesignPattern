@@ -10,9 +10,10 @@ public class ptbs {
 
 	private static Object ProductList;
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println("Facade ");
+		System.out.println("Facade is called");
 		Facade facade = new Facade();
 		Map<String,Object> authenticationResponse = facade.login();
 		if((boolean) authenticationResponse.get("loginStatus")) {
@@ -44,7 +45,7 @@ public class ptbs {
 				} catch (FileNotFoundException e) {
 					System.out.println("Error,try again!");
 				}
-				ProductIterator ci = new ProductIterator(ProductList);
+				ProductIterator ci = new ProductIterator((String[]) ProductList);
 				System.out.println("Select the  Produc: ");
 				ci.createIterator();
 				while(ci.hasNext()) {
